@@ -63,7 +63,6 @@ void employee::putempoly()
 	cout << "\nНомер сотрудника:" << nomer_sotrudnika << "\nВеличина оклада:" << velichina_oklada << "\nДолжность:" << dolzhnost<<"\nДата приёма на работу: "<<dataprim.den_priema<<" "<<dataprim.mesyac_priema<<" "<<dataprim.god_priema;
 	cout << endl;
 }
-using namespace std;
 int main()
 {
 	setlocale(0, "rus");
