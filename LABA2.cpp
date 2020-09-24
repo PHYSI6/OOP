@@ -13,10 +13,10 @@ class employee
 	string dolzhnost;
 	class date
 	{
-		public:
-			int den_priema;
-			int mesyac_priema;
-			int god_priema;
+	public:
+		int den_priema;
+		int mesyac_priema;
+		int god_priema;
 	}dataprim;
 public:
 	void getempoly();
