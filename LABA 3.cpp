@@ -10,24 +10,22 @@ public:
 	String(const char*);
 	String(const String&);
 	~String();
-	void OutPut();
 	char* operator+=(char* s);
 	char* operator=(char* s);
-	friend void Input(String&);
-	friend void Output(String&);
+	friend ostream& operator<<(ostream& out, const String& obj);
+	friend istream& operator>>(istream& in, String& obj);
 };
 
-void Input(String& a)
+ostream& operator <<(ostream& out, const String& obj)
 {
-	cout << "Введите строку 1:";
-	cin.getline(a.str, 80, '\n');
+	out << obj.str;
+	return out;
 }
-void Output(String& a)
+
+istream& operator >>(istream& in, String& obj)
 {
-	for (int i = 0; a.str[i] != '\0'; i++) {
-		cout << a.str[i];
-	}
-	cout << endl;
+	in >> obj.str;
+	return in;
 }
 
 void OutPutStr(char* str)
@@ -63,23 +61,16 @@ char* String::operator+=(char* s)
 	return str;
 }
 
-void String::OutPut()
-{
-	for (int i = 0; str[i] != '\0'; i++) {
-		cout << str[i];
-	}
-	cout << endl;
-}
-
 int main()
 {
 	setlocale(0, "rus");
 	char str1[80];
 	int vibor;
 	String obj;
-	Input(obj);
-	cout << "Введите 2 строку:";
-	cin.getline(str1, 80, '\n');
+	cout << "Введите 1 строку:";
+	cin.getline(str1, 80);
+	cout << "Введите 2 строку(объект):";
+	cin >> obj;
 	cout << "Выберите действие" << "\n1.объект=строка\n2.объект+=строка\n3.Выход\n";
 	cout << "->";
 	vibor = fun_check();
@@ -87,26 +78,26 @@ int main()
 	switch (vibor)
 	{
 	case 1:
-		cout << "Исходная строка 1(объект):";
-		Output(obj);
-		cout << "Исходная строка 2:";
+		cout << "Исходная строка 1:";
 		OutPutStr(str1);
+		cout << "\nИсходная строка 2(объект):";
+		cout << obj << endl;
 		cout << "\n------Результат после присваивания объекту строки-----\n";
 		obj = str1;
-		cout << "Первая строка(объект):";
-		Output(obj);
-		cout << "Вторая строка:";
+		cout << "Первая строка:";
+		cout << obj << endl;
+		cout << "Вторая строка(объект):";
 		OutPutStr(str1);
 		break;
 	case 2:
-		cout << "Исходная строка 1(объект):";
-		Output(obj);
-		cout << "Исходная строка 2:";
+		cout << "Исходная строка 1:";
 		OutPutStr(str1);
+		cout << "\nИсходная строка 2(объект):";
+		cout << obj << endl;
 		obj += str1;
 		cout << endl;
 		cout << "\n-----Результат сложения объекта и строки-----\n";
-		Output(obj);
+		cout << obj;
 		break;
 	case 3:
 		return 0;
